@@ -7,7 +7,7 @@ module Dvorak
     desc 'new GAME_NAME', 'Sets up a project directory for your game.'
     def new(name)
       @name = Thor::Util.snake_case(name)
-      directory(:project, @name)
+      directory(:game, @name)
     end
   end
 end

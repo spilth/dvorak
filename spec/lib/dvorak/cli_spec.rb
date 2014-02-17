@@ -6,7 +6,7 @@ module Dvorak
     describe 'new' do
       it 'creates a directory with the same name as the game' do
         cli = Dvorak::CLI.new
-        expect(cli).to receive(:directory).with(:project, 'mad_world')
+        expect(cli).to receive(:directory).with(:game, 'mad_world')
         cli.new('mad_world')
       end
     end
