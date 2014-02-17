@@ -9,5 +9,10 @@ module Dvorak
       @name = Thor::Util.snake_case(name)
       directory(:game, @name)
     end
+
+    desc 'generate', 'Turns your project into PDFs (not yet, though!)'
+    def generate
+      "This does not work yet."
+    end
   end
 end

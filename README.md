@@ -1,24 +1,21 @@
 # Dvorak
 
-TODO: Write a gem description
+Create Dvorak decks using YAML files. Generates PDFs of cards and rules.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'dvorak'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it with:
 
     $ gem install dvorak
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ dvorak new mad_world
+    $ cd mad_world
+
+Edit the files in your project directory, then do:
+
+    $ dvorak generate # Well, eventually...
 
 ## Contributing
 

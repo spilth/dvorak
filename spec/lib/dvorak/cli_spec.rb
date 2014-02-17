@@ -10,5 +10,13 @@ module Dvorak
         cli.new('mad_world')
       end
     end
+
+    describe 'generate' do
+      it 'does not actually do anything yet' do
+        cli = Dvorak::CLI.new
+        output = cli.generate
+        expect(output).to eq("This does not work yet.")
+      end
+    end
   end
 end
