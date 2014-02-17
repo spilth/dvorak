@@ -1,3 +1,5 @@
+[![Codeship Status for spilth/dvorak](https://www.codeship.io/projects/afb20380-7a33-0131-d6d5-1a6931038de8/status)](https://www.codeship.io/projects/14173)
+
 # Dvorak
 
 Create Dvorak decks using YAML files. Generates PDFs of cards and rules.
