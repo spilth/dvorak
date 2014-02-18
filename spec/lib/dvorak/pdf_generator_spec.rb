@@ -1,10 +1,10 @@
 require 'spec_helper'
-require 'dvorak/generator'
+require 'dvorak/pdf_generator'
 
 module Dvorak
-  describe 'Generator' do
+  describe 'PDFGenerator' do
     before do
-      @generator = Generator.new
+      @generator = PDFGenerator.new
     end
 
     describe '#generate' do
@@ -36,6 +36,11 @@ module Dvorak
         it 'sets result to a succes message' do
           @generator.generate
           expect(@generator.result).to eq 'Success!'
+        end
+
+        it 'creates an output directory' do
+          expect(Dir).to receive(:mkdir).with("output")
+          @generator.generate
         end
       end
 

@@ -12,10 +12,12 @@ module Dvorak
     end
 
     describe 'generate' do
-      it 'does not actually do anything yet' do
+      it 'creates a PDF generator and calls generate on it' do
+        generator = double(:generator)
+        expect(Dvorak::PDFGenerator).to receive(:new) { generator }
+        expect(generator).to receive(:generate)
         cli = Dvorak::CLI.new
-        output = cli.generate
-        expect(output).to eq("This does not work yet.")
+        cli.generate
       end
     end
   end

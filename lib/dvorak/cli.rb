@@ -1,4 +1,5 @@
 require 'thor'
+require 'dvorak/pdf_generator'
 
 module Dvorak
   class CLI < Thor
@@ -12,7 +13,8 @@ module Dvorak
 
     desc 'generate', 'Turns your project into PDFs (not yet, though!)'
     def generate
-      "This does not work yet."
+      generator = Dvorak::PDFGenerator.new
+      generator.generate
     end
   end
 end

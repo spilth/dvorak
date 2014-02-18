@@ -1,6 +1,6 @@
 require 'dvorak/cli'
 require 'dvorak/version'
-require 'dvorak/generator'
+require 'dvorak/pdf_generator'
 
 module Dvorak
 end
