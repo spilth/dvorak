@@ -1,9 +1,12 @@
 require 'spec_helper'
 require 'dvorak/pdf_generator'
+require 'dvorak/cli'
 
 module Dvorak
   describe 'PDFGenerator' do
     before do
+      Dvorak::CLI.source_root(File.expand_path('../../../../templates', __FILE__))
+      FileUtils.rm_r('test_game') if Dir.exist?('test_game')
       @generator = PDFGenerator.new
     end
 
@@ -28,22 +31,43 @@ module Dvorak
         end
       end
 
-      context 'cards directory is present' do
+      context 'game already created' do
         before do
-          Dir.stub(:exist?).with('cards') { true }
+          cli = Dvorak::CLI.new
+          cli.new('test_game')
+          Dir.chdir('test_game')
         end
 
-        it 'sets result to a succes message' do
-          @generator.generate
-          expect(@generator.result).to eq 'Success!'
+        after do
+          Dir.chdir('..')
         end
 
-        it 'creates an output directory' do
-          expect(Dir).to receive(:mkdir).with("output")
+        context 'cards directory is present' do
+          it 'sets result to a success message' do
+            @generator.generate
+            expect(@generator.result).to eq 'Success!'
+          end
+        end
+
+        context 'output directory does not already exist' do
+          it 'creates an output directory' do
+            @generator.generate
+            expect(File.exist?('output')).to be_true
+          end
+        end
+
+        context 'output directory already exists' do
+          it 'can run generate multiple times without complaint' do
+            @generator.generate
+            @generator.generate
+          end
+        end
+
+        it 'creates a pdf file of the cards' do
           @generator.generate
+          expect(File.exist?('output/cards.pdf')).to be_true
         end
       end
-
     end
   end
 end
