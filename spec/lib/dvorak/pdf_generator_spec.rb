@@ -18,7 +18,7 @@ module Dvorak
             @generator.generate
           rescue SystemExit
           end
-          expect(@generator.result).to eq 'Directory `game` does not exist. Please us `dvorak new GAME_NAME` to create a new project.'
+          expect(@generator.result).to eq 'Directory `cards` does not exist. Please use `dvorak new GAME_NAME` to create a new project.'
         end
 
         it 'exits with non-zero status' do
