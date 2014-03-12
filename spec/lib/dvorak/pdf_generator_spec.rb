@@ -74,10 +74,10 @@ module Dvorak
           reader = PDF::Reader.new("output/cards.pdf")
 
           expect(reader.pages.map(&:text)).to match_array [
-            'Yolokitten',
-            'Lolcat',
-            'Harmony',
-            'Unity'
+            'Quick-drying Cement',
+            'Brain Implant',
+            'Zombie Attack!',
+            'Anvil'
           ]
         end
       end
