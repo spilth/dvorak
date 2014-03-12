@@ -6,4 +6,5 @@ Feature: PDF Generation
     And I list the directories in my project
     Then I should see the directory "output"
     And I should see the file "output/cards.pdf"
+    And the PDF should have 4 pages
 

@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'dvorak/pdf_generator'
 require 'dvorak/cli'
+require 'pdf/reader'
 
 module Dvorak
   describe 'PDFGenerator' do
@@ -66,6 +67,18 @@ module Dvorak
         it 'creates a pdf file of the cards' do
           @generator.generate
           expect(File.exist?('output/cards.pdf')).to be_true
+        end
+
+        it 'creates a PDF with a page for each card in the deck' do
+          @generator.generate
+          reader = PDF::Reader.new("output/cards.pdf")
+
+          expect(reader.pages.map(&:text)).to match_array [
+            'Yolokitten',
+            'Lolcat',
+            'Harmony',
+            'Unity'
+          ]
         end
       end
     end

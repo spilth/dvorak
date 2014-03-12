@@ -1,3 +1,5 @@
+require 'prawn'
+
 module Dvorak
   class PDFGenerator
     attr_reader :result
@@ -5,11 +7,18 @@ module Dvorak
     def generate
       if Dir.exist?('cards')
         FileUtils.mkdir_p("output")
-        FileUtils.touch("output/cards.pdf")
 
-        # File.open("output/cards.pdf", "w") do |f|
-          # f.write("yolokitten")
-        # end
+        actions = YAML.load_file('cards/actions.yml')
+        things = YAML.load_file('cards/things.yml')
+
+        on_first_page = true
+        Prawn::Document.generate('output/cards.pdf') do
+          (things+actions).each do |action|
+            start_new_page unless on_first_page
+            text_box action['title']
+            on_first_page = false
+          end
+        end
 
         @result = 'Success!'
       else

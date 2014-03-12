@@ -1,5 +1,7 @@
 require File.dirname(__FILE__) + '/../../lib/dvorak'
 require 'fileutils'
+require 'pdf/reader'
+require 'pry'
 
 Given(/^I create a new deck named "(.*?)"$/) do |deck_name|
   @deck_name = deck_name
@@ -25,4 +27,9 @@ end
 
 Then(/^I should see the file "(.*?)"$/) do |file|
   expect(@files).to include("#{@deck_name}/#{file}")
+end
+
+Then(/^the PDF should have (\d+) pages$/) do |count|
+  reader = PDF::Reader.new("#{@deck_name}/output/cards.pdf")
+  expect(reader.page_count.to_s).to eq count
 end

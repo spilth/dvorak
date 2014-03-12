@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'thor'
+  spec.add_dependency 'prawn'
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency 'rake'
@@ -27,4 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'cucumber'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pdf-reader'
+
 end
