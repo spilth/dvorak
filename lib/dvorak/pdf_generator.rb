@@ -1,4 +1,5 @@
 require 'prawn'
+require 'yaml'
 
 module Dvorak
   class PDFGenerator
