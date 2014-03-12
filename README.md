@@ -17,7 +17,7 @@ Install it with:
 
 Edit the files in your project directory, then do:
 
-    $ dvorak generate # Well, eventually...
+    $ dvorak generate
 
 ## Contributing
 
